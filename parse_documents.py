@@ -24,10 +24,12 @@ if not pdf_files:
 for pdf_path in pdf_files:
     print(f"\n--- Parsing: {pdf_path.name} ---")
 
-    # Upload the file and parse it. Reducto returns a structured list of chunks,
+    # Upload the file, then parse it. Reducto returns a structured list of chunks,
     # each with a block_type (e.g. text, table, figure) and its content.
     with open(pdf_path, "rb") as f:
-        result = client.parse.file(file=f)
+        upload = client.upload(file=f, extension="pdf")
+
+    result = client.parse.run(input=upload.file_id)
 
     chunks = result.result.chunks
 
@@ -39,7 +41,7 @@ for pdf_path in pdf_files:
     # Save the full structured output as JSON alongside the source filename
     output_path = output_dir / f"{pdf_path.stem}.json"
     with open(output_path, "w") as out:
-        json.dump([c.dict() for c in chunks], out, indent=2)
+        json.dump([c.model_dump() for c in chunks], out, indent=2)
 
     print(f"  Saved → {output_path}")
 
