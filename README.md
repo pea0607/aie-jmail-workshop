@@ -21,7 +21,7 @@ reducto login          # opens Reducto Studio in your browser — one-time auth
 
 ## Part 1: Parse Documents with the Reducto CLI
 
-The `/docs` folder contains 5 sample FBI FOIA documents. Parse them all with one command:
+The `/docs` folder contains 5 sample documents used in Jmail. Parse them all with one command:
 
 ```bash
 reducto parse ./docs
