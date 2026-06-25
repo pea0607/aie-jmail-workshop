@@ -20,7 +20,7 @@ scale_query = f"""
 SELECT
     volume,
     COUNT(*) AS document_count
-FROM read_parquet('{BASE_URL}/documents-index/*.parquet')
+FROM read_parquet('{BASE_URL}/v1/documents.parquet')
 GROUP BY volume
 ORDER BY volume
 """
@@ -37,11 +37,11 @@ print("=" * 55)
 # Swap KEYWORD at the top of this file to search for anything you want.
 keyword_query = f"""
 SELECT
-    doc_id,
+    source,
     volume,
-    content
-FROM read_parquet('{BASE_URL}/documents-full/VOL00009.parquet')
-WHERE lower(content) LIKE '%{KEYWORD.lower()}%'
+    extracted_text
+FROM read_parquet('{BASE_URL}/v1/documents-full/VOL00009.parquet')
+WHERE lower(extracted_text) LIKE '%{KEYWORD.lower()}%'
 LIMIT 10
 """
 
@@ -51,10 +51,9 @@ if results_df.empty:
     print(f"No documents matched '{KEYWORD}' in VOL00009.")
 else:
     for _, row in results_df.iterrows():
-        print(f"\nDoc ID : {row['doc_id']}")
+        print(f"\nSource : {row['source']}")
         print(f"Volume : {row['volume']}")
-        # Show a short excerpt around the match
-        snippet = row["content"][:300].replace("\n", " ")
+        snippet = row["extracted_text"][:300].replace("\n", " ")
         print(f"Excerpt: {snippet}...")
 
 print("\nDone.")

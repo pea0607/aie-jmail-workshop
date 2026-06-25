@@ -35,7 +35,8 @@ for pdf_path in pdf_files:
 
     # Print a preview of each chunk so you can see what Reducto extracted
     for i, chunk in enumerate(chunks):
-        print(f"  Chunk {i+1} | type: {chunk.block_type}")
+        block_type = chunk.blocks[0].type if chunk.blocks else "unknown"
+        print(f"  Chunk {i+1} | type: {block_type}")
         print(f"    {chunk.content[:200]}")  # truncate long content for readability
 
     # Save the full structured output as JSON alongside the source filename
