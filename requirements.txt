@@ -1,4 +1,0 @@
-reductoai
-duckdb
-pandas
-python-dotenv
