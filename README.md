@@ -17,7 +17,7 @@ This workshop walks through two things: parsing real scanned documents with Redu
 ```bash
 git clone <this-repo>
 cd <this-repo>
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 cp .env.example .env
 # Open .env and paste your Reducto API key
 ```
@@ -31,7 +31,7 @@ cp .env.example .env
 The `/docs` folder contains 5 sample FBI FOIA documents for you to parse. You can also add your own PDFs there. Then run:
 
 ```bash
-python parse_documents.py
+python3 parse_documents.py
 ```
 
 This sends each PDF through the Reducto Parse API and saves the structured output as JSON files in `/output`. The printed output shows each chunk's `block_type` and `content`.
@@ -41,7 +41,7 @@ This sends each PDF through the Reducto Parse API and saves the structured outpu
 ### 2. `query_jmail_data.py` — Query the Jmail Dataset
 
 ```bash
-python query_jmail_data.py
+python3 query_jmail_data.py
 ```
 
 This connects to the Jmail Data API via DuckDB and runs two queries:
