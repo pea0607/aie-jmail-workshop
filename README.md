@@ -1,4 +1,4 @@
-# AIE Workshop: How Jmail Leveraged Reducto
+# AIE Workshop: Building Jmail with Reducto
 
 This workshop walks through parsing real scanned documents with the Reducto CLI.
 
