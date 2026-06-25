@@ -28,7 +28,7 @@ cp .env.example .env
 
 ### 1. `parse_documents.py` — Parse PDFs with Reducto
 
-Drop your PDF files into the `/docs` folder, then run:
+The `/docs` folder contains 5 sample FBI FOIA documents for you to parse. You can also add your own PDFs there. Then run:
 
 ```bash
 python parse_documents.py
