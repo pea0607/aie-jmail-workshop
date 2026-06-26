@@ -1,46 +1,59 @@
 # AIE Workshop: Building Jmail with Reducto
 
-This workshop walks through parsing real scanned documents with the Reducto CLI.
+This workshop walks through two things: parsing real scanned documents with Reducto, and querying the Jmail dataset — a large archive of digitized mail — using DuckDB.
 
 ---
 
 ## Prerequisites
 
-- A Reducto account → [studio.reducto.ai](https://studio.reducto.ai)
+- Python 3.8+
+- `pip`
+- A Reducto API key → [studio.reducto.ai/api-keys](https://studio.reducto.ai/api-keys)
 
 ---
 
 ## Setup
 
 ```bash
-pip3 install reducto-cli
-reducto login          # opens Reducto Studio in your browser — one-time auth
+git clone <this-repo>
+cd <this-repo>
+pip3 install -r requirements.txt
+cp .env.example .env
+# Open .env and paste your Reducto API key
 ```
 
 ---
 
-## Part 1: Parse Documents with the Reducto CLI
+## Part 1: Parse PDFs with Reducto
 
-The `/docs` folder contains 5 sample documents used in Jmail. Parse them all with one command:
-
-```bash
-reducto parse ./docs
-```
-
-Each PDF is parsed and saved alongside the source as `<filename>.parse.md`. Open any of them to see Reducto's structured output.
-
-Some flags worth trying:
+The `/docs` folder contains 5 documents as a sample set. You can also replace these or drop in your own PDFs. Run:
 
 ```bash
-reducto parse ./docs --agentic            # enhanced table + figure accuracy
-reducto parse ./docs --hyperlinks         # include embedded links
-reducto parse ./docs --agentic --hyperlinks --comments
+python3 parse_documents.py
 ```
+
+This sends each PDF through the Reducto Parse API and saves the structured output as JSON in `/output`. The printed output shows each chunk's `block_type` and `content`.
+
+---
+
+## Part 2: Query the Jmail Dataset
+
+```bash
+python3 query_jmail_data.py
+```
+
+This connects to the Jmail Data API via DuckDB and runs two queries:
+- A breakdown of document counts per volume across the full archive
+- A keyword search over `VOL00009` — change the `KEYWORD` variable at the top of the file to search for anything you want
+
+---
+
+## Bonus: CLI & MCP Demo (live)
 
 ---
 
 ## Resources
 
-- Reducto CLI docs: [docs.reducto.ai/cli](https://docs.reducto.ai/cli)
 - Reducto docs: [docs.reducto.ai](https://docs.reducto.ai)
 - Jmail Data API: [data.jmail.world](https://data.jmail.world)
+- Reducto Studio: [studio.reducto.ai](https://studio.reducto.ai)

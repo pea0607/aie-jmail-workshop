@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "description": "Date the document was created or sent"
+    },
+    "subject": {
+      "type": "string",
+      "description": "Subject line or title of the document"
+    },
+    "from": {
+      "type": "string",
+      "description": "Sender or originating office"
+    },
+    "to": {
+      "type": "string",
+      "description": "Recipient or destination office"
+    },
+    "classification": {
+      "type": "string",
+      "description": "Classification level (e.g. UNCLASSIFIED, CONFIDENTIAL, SECRET)"
+    },
+    "file_number": {
+      "type": "string",
+      "description": "FBI file or case number"
+    },
+    "document_type": {
+      "type": "string",
+      "description": "Type of document (e.g. memo, letter, report, teletype)"
+    },
+    "summary": {
+      "type": "string",
+      "description": "One sentence summary of what the document is about"
+    }
+  }
+}
