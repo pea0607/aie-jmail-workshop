@@ -1,4 +1,4 @@
-# AIE Workshop: How Jmail Leveraged Reducto
+# AIE Workshop: Building Jmail with Reducto
 
 This workshop walks through two things: parsing real scanned documents with Reducto, and querying the Jmail dataset — a large archive of digitized mail — using DuckDB.
 
