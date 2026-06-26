@@ -1,6 +1,6 @@
 # AIE Workshop: Building Jmail with Reducto
 
-This workshop walks through three things: parsing real scanned documents with Reducto, extracting structured data from them, and querying the Jmail dataset — a large archive of digitized mail — using DuckDB.
+This workshop walks through three things: parsing real scanned documents with Reducto, extracting structured data from them, and querying the Jmail dataset using DuckDB.
 
 ---
 
