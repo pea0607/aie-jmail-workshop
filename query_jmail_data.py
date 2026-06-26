@@ -2,7 +2,7 @@ import duckdb
 
 # Change this to search for any term in the VOL00009 volume
 KEYWORD = "invoice"
-x
+
 con = duckdb.connect()
 BASE_URL = "https://data.jmail.world"
 
