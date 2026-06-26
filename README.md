@@ -1,6 +1,6 @@
 # AIE Workshop: Building Jmail with Reducto
 
-This workshop walks through two things: parsing real scanned documents with Reducto, and querying the Jmail dataset — a large archive of digitized mail — using DuckDB.
+This workshop walks through three things: parsing real scanned documents with Reducto, extracting structured data from them, and querying the Jmail dataset — a large archive of digitized mail — using DuckDB.
 
 ---
 
@@ -26,7 +26,7 @@ cp .env.example .env
 
 ## Part 1: Parse PDFs with Reducto
 
-The `/docs` folder contains 5 documents as a sample set. You can also replace these or drop in your own PDFs. Run:
+The `/docs` folder contains 5 sample FBI FOIA documents. You can also drop in your own PDFs. Run:
 
 ```bash
 python3 parse_documents.py
@@ -36,7 +36,19 @@ This sends each PDF through the Reducto Parse API and saves the structured outpu
 
 ---
 
-## Part 2: Query the Jmail Dataset
+## Part 2: Extract Structured Data with Reducto
+
+The `/docs` folder contains sample FBI FOIA documents. `schema.json` defines the fields to extract — date, sender, recipient, case number, document type, and a one-sentence summary. Run:
+
+```bash
+python3 extract_documents.py
+```
+
+Reducto reads each scanned document and returns a clean JSON object with those fields populated. Results are saved to `/output` as `<filename>_extracted.json`.
+
+---
+
+## Part 3: Query the Jmail Dataset
 
 ```bash
 python3 query_jmail_data.py
